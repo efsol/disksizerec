@@ -6,8 +6,8 @@ require 'disksizerec/version'
 Gem::Specification.new do |spec|
   spec.name          = "disksizerec"
   spec.version       = Disksizerec::VERSION
-  spec.authors       = ["Eiichi Shimotori"]
-  spec.email         = ["eiichi.shimotori@gmail.com"]
+  spec.authors       = ["Effective Solutions Corporation"]
+  spec.email         = ["itservice@efsolmail.com"]
   spec.summary       = %q{DiskSizeRec is a tool to record disk sizes to MongoDB.}
   spec.description   = %q{DiskSizeRec is a tool to record disk sizes to MongoDB.}
   spec.homepage      = "https://github.com/efsol/disksizerec"
