@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Disksizerec::VERSION
   spec.authors       = ["Eiichi Shimotori"]
   spec.email         = ["eiichi.shimotori@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Tool to record disk sizes to MongoDB}
+  spec.description   = %q{Tool to record disk sizes to MongoDB}
+  spec.homepage      = "https://github.com/efsol/disksizerec"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
