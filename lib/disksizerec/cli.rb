@@ -22,12 +22,7 @@ module Disksizerec
       db = options[:db]
 
       sizes = get_sizes
-      
-      unless options[:silent]
-        sizes.each do |size|
-          puts size.to_s
-        end
-      end
+      display_sizes sizes  unless options[:silent]
       
       return  if store == ''
       abort 'Error: DB name should be specified with --db option'  if db == ''
@@ -52,11 +47,19 @@ module Disksizerec
             mount: value[:mount],
             mb_used: value[:kb_used].to_i / 1024, 
             mb_available: value[:kb_available].to_i / 1024,
-            created_at: Time.now
+            created_at: Time.now,
         }
         sizes << size
       end
       sizes
+    end
+
+
+    # Display data
+    def display_sizes(sizes)
+      sizes.each do |size|
+        puts size.to_s
+      end
     end
     
     
@@ -68,6 +71,6 @@ module Disksizerec
       coll = db.collection 'disk_sizes'
       coll.insert sizes
     end
-
+    
   end
 end
