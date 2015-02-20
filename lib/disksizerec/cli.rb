@@ -20,9 +20,14 @@ module Disksizerec
       store = options[:store]
       port = options[:port]
       db = options[:db]
-      # puts "exec with #{store}"
+
       sizes = get_disk_sizes
-      puts sizes.inspect
+      
+      unless options[:silent]
+        sizes.each do |size|
+          puts size.to_s
+        end
+      end
       
       return  if store == ''
       abort 'Error: DB name should be specified with --db option'  if db == ''
