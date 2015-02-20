@@ -13,11 +13,19 @@ module Disksizerec
 
 
     desc "check", "Check the sizes of mounted disks and store them to a host or just display them"
-    option :store, type: :string, desc: 'MongoDB server info to store data (host[:port])'
+    option :store, type: :string, desc: 'MongoDB server info to store data (host[:port])', default: ''
+    option :db, type: :string, desc: 'DB name to store data', default: ''
     def check
-      puts "check with #{options[:store]}"
+      store = options[:store]
+      db = options[:db]
+      puts "check with #{store}"
       sizes = get_disk_sizes
       puts sizes.inspect
+      
+      return  if store == ''
+      abort 'Error: DB name should be specified with --db option'  if db == ''
+      
+      store_sizes sizes, store, db
     end
     
     
@@ -45,5 +53,12 @@ module Disksizerec
       sizes
     end
     
+    
+    # Store size data
+    def store_sizes(sizes, store, db)
+      puts "store_sizes to #{store}, #{db}"
+      
+    end
+
   end
 end
