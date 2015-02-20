@@ -2,6 +2,7 @@
 
 require 'thor'
 require 'ohai'
+require 'mongo'
 
 
 module Disksizerec

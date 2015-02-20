@@ -23,4 +23,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "thor"
   spec.add_dependency "ohai"
+  spec.add_dependency "mongo"
+  spec.add_dependency "bson_ext"
 end
