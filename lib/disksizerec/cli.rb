@@ -21,7 +21,7 @@ module Disksizerec
       port = options[:port]
       db = options[:db]
 
-      sizes = get_disk_sizes
+      sizes = get_sizes
       
       unless options[:silent]
         sizes.each do |size|
@@ -40,7 +40,7 @@ module Disksizerec
     private
     
     # Get the sizes of mounted disks
-    def get_disk_sizes
+    def get_sizes
       oh = Ohai::System.new
       oh.all_plugins
 
