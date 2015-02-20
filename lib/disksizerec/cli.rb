@@ -9,16 +9,14 @@ module Disksizerec
 
     class_option :silent, type: :boolean, default: false, desc: 'Not display data', aliases: '-s'
 
-    default_command :check
 
-
-    desc "check", "Check the sizes of mounted disks and store them to a host or just display them"
+    desc "exec", "Check the sizes of mounted disks and store them to a host or just display them"
     option :store, type: :string, desc: 'MongoDB server info to store data (host[:port])', default: ''
     option :db, type: :string, desc: 'DB name to store data', default: ''
-    def check
+    def exec
       store = options[:store]
       db = options[:db]
-      puts "check with #{store}"
+      puts "exec with #{store}"
       sizes = get_disk_sizes
       puts sizes.inspect
       
