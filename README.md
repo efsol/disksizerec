@@ -1,26 +1,17 @@
-# Disksizerec
+# DiskSizeRec
 
-TODO: Write a gem description
+DiskSizeRec is a tool to record disk sizes to MongoDB.
+
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Make a clone of this project.
 
-```ruby
-gem 'disksizerec'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install disksizerec
 
 ## Usage
 
-TODO: Write usage instructions here
+On the top of this project, type `bundle exec disksizerec help` and then you can see the usage.
+
 
 ## Contributing
 
