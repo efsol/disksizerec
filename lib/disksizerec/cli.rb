@@ -20,7 +20,8 @@ module Disksizerec
       store = options[:store]
       port = options[:port]
       db = options[:db]
-
+      
+      
       sizes = get_sizes
       display_sizes sizes  unless options[:silent]
       
@@ -34,16 +35,28 @@ module Disksizerec
     
     private
     
+    # Ohai factory
+    def ohai_factory
+      if @ohai.nil?
+        @ohai = Ohai::System.new
+        @ohai.all_plugins
+      end
+      @ohai
+    end
+    
+    
     # Get the sizes of mounted disks
     def get_sizes
-      oh = Ohai::System.new
-      oh.all_plugins
+      ohai_factory
 
+      host = get_localhost_fqdn
+      
       sizes = []
-      oh[:filesystem].each do |key, value|
+      @ohai[:filesystem].each do |key, value|
         next  unless value.key?(:kb_used)
 
         size = {
+            host: host,
             mount: value[:mount],
             mb_used: value[:kb_used].to_i / 1024, 
             mb_available: value[:kb_available].to_i / 1024,
@@ -53,8 +66,14 @@ module Disksizerec
       end
       sizes
     end
-
-
+    
+    
+    # Get the local host FQDN
+    def get_localhost_fqdn
+      @ohai[:machinename]
+    end
+    
+    
     # Display data
     def display_sizes(sizes)
       sizes.each do |size|
